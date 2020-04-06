@@ -1,0 +1,114 @@
+class Pet
+  include Math
+  def initialize
+  end
+  def himkind
+    x = ""
+    while x != "Dog" && x != "dog" && x != "Cat" && x != "cat" && x != "Fish" && x != "fish"
+      puts("Select the pet you want to care for:")
+      puts( "Dog, Cat, Fish")
+      x = gets.chomp().to_s
+      if x == "Dog" || x == "dog"
+        kind = "Dog"
+        print "You have chosen a dog."
+      elsif x == "Cat" || x == "cat"
+        kind = "Cat"
+        print "You have chosen a cat."
+      elsif x == "Fish" || x == "fish"
+        kind = "Fish"
+        print "You have chosen a fish."
+      else
+        puts "You entered something wrong, try again!"
+      end
+      @kind = kind
+    end
+  end
+  def name
+    print("Enter a name: ")
+    firstname = gets.chomp()
+    @firstname = firstname
+    print("Your pet's name #{firstname}")
+  end
+  def health
+    diya = 0
+    health = 100
+    eat = 0
+    sleep = 0
+    play = 0
+    naturalNeed = 0
+    print("Enter what you want to do with #{@firstname}:
+1.Take to the doctor = health
+2.feed
+3.put to bed = sleep
+4.play
+5.divert to natural need = naturalNeed ")
+puts ""
+    while 100 >= health && health > 0 && 100 > eat && eat >= 0 && 100 > sleep && sleep >= 0 && 100 > play && play >= 0 && 100 > naturalNeed && naturalNeed >= 0
+      puts "#{@firstname} health - #{health} , appetite - #{eat} ,
+desire to sleep - #{sleep}, desire to play- #{play}, natural need - #{naturalNeed}."
+      diya = gets.chomp().to_s
+      if diya == "health"
+        health += rand (20)
+        eat += rand(20)
+        sleep += rand(15)
+        play += rand(10)
+        naturalNeed += rand(10)
+        puts "#{@firstname} on examination at the vet!))"
+        if health > 100
+          health = 100
+        end
+      elsif diya == "feed"
+        health -= rand (10)
+        eat -= rand(20)
+        sleep += rand(15)
+        play += rand(10)
+        naturalNeed += rand(10)
+        puts "#{@firstname} eats your food!))"
+        if eat < 0
+          eat = 0
+        end
+      elsif diya == "sleep"
+        health -= rand (10)
+        eat += rand(20)
+        sleep -= rand(15)
+        play += rand(10)
+        naturalNeed += rand(10)
+        puts "#{@firstname} sleeps near you))"
+        if sleep < 0
+          sleep = 0
+        end
+      elsif diya == "play"
+        health -= rand (10)
+        eat += rand(20)
+        sleep += rand(15)
+        play -= rand(10)
+        naturalNeed += rand(10)
+        puts "#{@firstname} playing with you))"
+        if play < 0
+          play = 0
+        end
+
+      elsif diya == "naturalNeed"
+        health -= rand (10)
+        eat += rand(20)
+        sleep += rand(15)
+        play += rand(10)
+        naturalNeed -= rand(10)
+        puts "#{@firstname} goes in a natural need!"
+        if naturalNeed < 0
+          naturalNeed = 0
+        end
+      else
+        puts "You entered something wrong, try again!"
+      end
+    end
+ 
+ print("#{@firstname} went to heaven ((")
+  end
+
+end
+
+pet = Pet.new
+puts pet.himkind
+puts pet.name
+puts pet.health
